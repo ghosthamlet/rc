@@ -1158,5 +1158,6 @@ function! DecFont()
     :call ChgFont()
 endfunction
 function! ChgFont()
-    :exec ":set guifont=Courier\\ New:h" .s:curFontSize. ":cANSI"
+    " :exec \":set guifont=Courier\\ New:h" .s:curFontSize. \":cANSI"
+    :exec ":set guifont=Lucida_Console:h" .s:curFontSize. ":cANSI"
 endfunction
