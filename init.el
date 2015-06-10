@@ -133,8 +133,11 @@ by Prelude.")
 ;; http://batsov.com/prelude/
 
 (load-theme 'deeper-blue t)
-;;; init.el ends here
 
+(require 'evil)
+(require 'evil-leader)
+(global-evil-leader-mode)
+;; (evil-leader-mode)
 (evil-mode)
 
 (scroll-bar-mode -1)
@@ -180,6 +183,43 @@ by Prelude.")
           (setq screens (cdr screens))))))
 
 (elscreen-start)
+(setq elscreen-prefix-key "\C-t")
+
 (push #'elscreen-store kill-emacs-hook)
 (elscreen-restore)
-(setq elscreen-display-tab 3)
+
+;; (setq elscreen-display-tab 3)
+(setq elscreen-display-tab nil)
+(setq elscreen-tab-display-control nil)
+(setq elscreen-tab-display-kill-screen nil)
+
+(require 'paredit)
+(paredit-mode)
+;; (add-hook M-mode-hook 'enable-paredit-mode)
+;; (eval-after-load 'paredit
+;;  '(progn ...redefine keys, &c....))
+
+;; (evil-leader/set-leader "<SPC>")
+;; M-s to splice, see paredit.el
+;; evil-paredit.e
+(eval-after-load 'paredit
+  '(progn
+     (message "evil-leader enabled!!!")
+     (evil-leader/set-leader ",")
+     (evil-leader/set-key
+       "(" 'paredit-open-round
+       "[" 'paredit-open-square
+       "{" 'paredit-open-curly
+       "<" 'paredit-open-angled
+       "\"" 'paredit-doublequote
+       ;; FIXME other file include clj worked,
+       ;;       can't work after open new el!!!
+       "n" 'elscreen-create
+       "q" 'elscreen-kill
+       "c" 'elscreen-clone
+       "f" 'elscreen-next
+       "b" 'elscreen-previous)))
+
+;; http://stackoverflow.com/questions/5377960/whats-the-best-practice-to-git-clone-into-an-existing-folder
+
+;;; init.el ends here
