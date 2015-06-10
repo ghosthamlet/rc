@@ -188,16 +188,16 @@ by Prelude.")
 (push #'elscreen-store kill-emacs-hook)
 (elscreen-restore)
 
-;; (setq elscreen-display-tab 3)
-(setq elscreen-display-tab nil)
+;; hide it
+;; (setq elscreen-display-tab nil)
+(setq elscreen-display-tab 3)
 (setq elscreen-tab-display-control nil)
 (setq elscreen-tab-display-kill-screen nil)
 
 (require 'paredit)
 (paredit-mode)
-;; (add-hook M-mode-hook 'enable-paredit-mode)
-;; (eval-after-load 'paredit
-;;  '(progn ...redefine keys, &c....))
+(add-hook 'lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'clojure-mode-hook 'enable-paredit-mode)
 
 ;; (evil-leader/set-leader "<SPC>")
 ;; M-s to splice, see paredit.el
@@ -205,6 +205,9 @@ by Prelude.")
 (eval-after-load 'paredit
   '(progn
      (message "evil-leader enabled!!!")
+     ;; FIXME other file include clj worked,
+     ;;       can't work after open new el!!!
+     ;;       all files can't work after restore session but some
      (evil-leader/set-leader ",")
      (evil-leader/set-key
        "(" 'paredit-open-round
@@ -212,8 +215,6 @@ by Prelude.")
        "{" 'paredit-open-curly
        "<" 'paredit-open-angled
        "\"" 'paredit-doublequote
-       ;; FIXME other file include clj worked,
-       ;;       can't work after open new el!!!
        "n" 'elscreen-create
        "q" 'elscreen-kill
        "c" 'elscreen-clone
