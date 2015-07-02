@@ -223,4 +223,37 @@ by Prelude.")
 
 ;; http://stackoverflow.com/questions/5377960/whats-the-best-practice-to-git-clone-into-an-existing-folder
 
+
+
+;; https://www.cs.utexas.edu/users/novak/gclwin.html
+;; use run-lisp commond to switch to lisp
+;; XXX path can't contains space
+(defun -run-lisp (path)
+  (progn
+    (when (get-process "inferior-lisp")
+      (kill-process (get-process "inferior-lisp")))
+    (message "sleep-for 1 sec to wait prev lisp exit")
+    (sleep-for 1)
+    (set-variable 'inferior-lisp-program path)
+    (autoload 'fi:common-lisp "fi-site-init" "" t)
+    (run-lisp inferior-lisp-program))
+  (message "config at ~/.emacs"))
+
+(defun run-gc11 ()
+  (interactive)  
+  (-run-lisp "D:/Progra~1/GCL-2.6.1/bin/gcl1.bat"))
+
+(defun run-gc1 ()
+  (interactive)
+  (-run-lisp "E:/download/gcl.exe"))
+
+(defun run-clisp ()
+  (interactive)
+  (-run-lisp "D:/Progra~1/clisp-2.49/clisp.exe"))
+
+(defun run-ccl ()
+  (interactive)
+  (-run-lisp "E:/download/ccl-1.10-windowsx86/ccl/wx86cl.exe"))
+
+
 ;;; init.el ends here
