@@ -41,6 +41,12 @@ cd E:\MC
  
 syntax on
 
+let delimitMate_expand_cr = 1
+"" don't use <:>, or can't work with closetag
+au FileType html,tpl,php let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.php"
+
 filetype plugin indent on
 
 colorscheme emacsredux.com
@@ -347,6 +353,11 @@ nnoremap ,h :!cmd<CR>
 let g:shell_fullscreen_always_on_top = 0
 
 
+" https://github.com/avelino/vim-bootstrap/tree/master/vim_template
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 
 
 " :arg *.c 	All *.c files in current directory.
@@ -374,7 +385,18 @@ autocmd GUIEnter * simalt ~x
 " 错误提示“没有文件名”
 au FocusLost * silent! up
 
- " au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
+" XXX session now all place in $VIM/session/*.sss
+"
+" XXX this control search by '*'
+"     setlocal iskeyword=@,48-57,_,128-167,224-235
+"     but in the work session some file is 
+"     setlocal iskeyword=@,48-57,_,128-167,224-235,?,-,*,!,+,/,=,<,>,.,:
+"     it is not right, use the first line!
+function! ResetKeyWord ()
+    setlocal iskeyword=@,48-57,_,128-167,224-235
+endfunction
+
+" au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
 au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
 
 au WinLeave * set nocursorline nocursorcolumn
