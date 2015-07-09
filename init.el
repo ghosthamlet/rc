@@ -224,11 +224,16 @@ by Prelude.")
 ;; http://stackoverflow.com/questions/5377960/whats-the-best-practice-to-git-clone-into-an-existing-folder
 
 
+(load "elpa/evil-visual-mark-mode.el")
+;; run evil-visual-mark-mode
+(require 'evil-visual-mark-mode)
+
 
 ;; https://www.cs.utexas.edu/users/novak/gclwin.html
 ;; use run-lisp commond to switch to lisp
 ;; XXX path can't contains space
 (defun -run-lisp (path)
+  "PATH DOC."
   (progn
     (when (get-process "inferior-lisp")
       (kill-process (get-process "inferior-lisp")))
@@ -240,18 +245,22 @@ by Prelude.")
   (message "config at ~/.emacs"))
 
 (defun run-gc11 ()
-  (interactive)  
+  "DOC."
+  (interactive)
   (-run-lisp "D:/Progra~1/GCL-2.6.1/bin/gcl1.bat"))
 
 (defun run-gc1 ()
+  "DOC."
   (interactive)
   (-run-lisp "E:/download/gcl.exe"))
 
 (defun run-clisp ()
+  "DOC."
   (interactive)
   (-run-lisp "D:/Progra~1/clisp-2.49/clisp.exe"))
 
 (defun run-ccl ()
+  "DOC."
   (interactive)
   (-run-lisp "E:/download/ccl-1.10-windowsx86/ccl/wx86cl.exe"))
 
