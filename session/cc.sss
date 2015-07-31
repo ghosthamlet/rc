@@ -2,10 +2,10 @@ let SessionLoad = 1
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <M-a> ea
-inoremap <M-B> bi
-inoremap <M-F> ea
 lnoremap <M-f> 0i
+inoremap <M-F> ea
+inoremap <M-B> bi
+inoremap <M-a> ea
 inoremap <C-F11> :Maximize
 inoremap <F11> :Fullscreen
 inoremap <F6> :Open
@@ -15,6 +15,8 @@ inoremap <Plug>clj_repl_eval. G$:call redl#repl#enter_hook()
 inoremap <Plug>clj_repl_enter. :call redl#repl#enter_hook()
 imap <silent> <expr> <F5> (pumvisible() ? "\<Plug>LookupFileCE" : "")."\\<Plug>LookupFile"
 inoremap <Plug>LookupFileCE 
+inoremap <silent> <expr> <Plug>delimitMateS-BS delimitMate#WithinEmptyPair() ? "\<Del>" : "\<S-BS>"
+inoremap <silent> <Plug>delimitMateBS =delimitMate#BS()
 inoremap <Plug>ClojureReplDownHistory. :call b:vimclojure_repl.downHistory()
 inoremap <Plug>ClojureReplUpHistory. :call b:vimclojure_repl.upHistory()
 inoremap <Plug>ClojureReplEvaluate. G$:call b:vimclojure_repl.enterHook()
@@ -57,6 +59,8 @@ vnoremap  "+x
 noremap  
 noremap  u
 nnoremap   gt
+nnoremap ,o :call SessionOpenBy()
+nnoremap ,e :call SessionSaveTo()
 nnoremap ,h :!cmd
 nnoremap ,s :call ClearTabSets()
 nnoremap ,t :call SetTabSets()
@@ -73,26 +77,26 @@ nnoremap Hmc :silent !explorer.exe D:\program\wamp\www\mandarincafe
 nnoremap H2 :silent !explorer.exe D:\program\wamp\www\tmus\home\tmus\htdocs
 nnoremap H1 :silent !explorer.exe D:\program\wamp\www\mandarincafe
 vnoremap J :m '>+1gv=gv
-vnoremap K :m '<-2gv=gv
-nnoremap K :call OpenPhpFunction(expand('<cword>'))
 onoremap K :call OpenPhpFunction(expand('<cword>'))
+nnoremap K :call OpenPhpFunction(expand('<cword>'))
+vnoremap K :m '<-2gv=gv
 nnoremap L :call MakLastSea()
 map Q gq
 xmap S <Plug>VSurround
 vmap [% [%m'gv``
 vmap <silent> \t :call Ocaml_print_type("visual")`<
-map \s :call OCaml_switch(0)
-map \S :call OCaml_switch(1)
 nmap <silent> \t :call Ocaml_print_type("normal")
 omap <silent> \t :call Ocaml_print_type("normal")
+map \S :call OCaml_switch(1)
+map \s :call OCaml_switch(0)
 nnoremap <silent> \mt :TMToggle
 nnoremap <silent> \mf :TMFocus
 nnoremap <silent> \ff :call g:Jsbeautify()
-nnoremap <silent> \b :CommandTBuffer
 map \dk <Plug>DirDiffPrev
 map \dj <Plug>DirDiffNext
 map \dp <Plug>DirDiffPut
 map \dg <Plug>DirDiffGet
+nnoremap <silent> \b :CommandTBuffer
 nnoremap \ec :call InsertTpl('E:/doc/Erlang/zotonic-release-0.12.1/tpl.erl')
 nnoremap \pp :call PrevTabCurFile()
 nnoremap \pc :call PrevNewTabCurFile()
@@ -135,11 +139,11 @@ nmap ySs <Plug>YSsurround
 nmap yss <Plug>Yssurround
 nmap yS <Plug>YSurround
 nmap ys <Plug>Ysurround
-nnoremap <C-F4> c
-nnoremap <C-Tab> w
-nmap <S-Insert> "+gP
-nnoremap <M-N> 33
 nnoremap <M-M> 77
+nnoremap <M-N> 33
+nmap <S-Insert> "+gP
+nnoremap <C-Tab> w
+nnoremap <C-F4> c
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 nnoremap <C-F11> :Maximize
 nnoremap <F11> :Fullscreen
@@ -265,80 +269,80 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 ~\Local\ Settings\Temp\HZ$D.969.2581\edit_lib.erl
-badd +286 \MC\tm2014\components\com_flexicontent\templates\blog\category_items.php
-badd +0 \MC\tm2014\components\com_flexicontent\controller.php
-badd +0 \MC\summercamp\libraries\tm\function.php
-badd +0 \MC\teacher\application\controllers\calendar.php
-badd +603 \doc\baiyi-bak.txt
-badd +0 \MC\mc2014\src\mc2014\routes\game.clj
-badd +0 \java\clojure\hfq-lisp\hfqsite\project.clj
+badd +1 \MC\tm2014\components\com_flexicontent\templates\blog\category_items.php
+badd +1 \MC\tm2014\components\com_flexicontent\controller.php
+badd +1 \MC\summercamp\libraries\tm\function.php
+badd +1 \MC\teacher\application\controllers\calendar.php
+badd +607 \doc\baiyi-bak.txt
+badd +1 \MC\mc2014\src\mc2014\routes\game.clj
+badd +1 \java\clojure\hfq-lisp\hfqsite\project.clj
 badd +35 \doc\hack\earths-mightiest-monsters-the-character-arcs-of-avengers-age-of-ultron.txt
-badd +0 \java\clojure\hfq-lisp\hfq-network-bn\src\hfq_network_bn\core.clj
-badd +0 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\util\user.clj
-badd +0 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\routes\user.clj
-badd +0 \java\clojure\hfq-lisp\hfqsite\TODO
-badd +0 \java\clojure\hfq-lisp\hfqsite\test\hfqsite\test\user-route.clj
-badd +0 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\cfg.clj
-badd +0 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\util.clj
-badd +0 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\db\schema.clj
+badd +1 \java\clojure\hfq-lisp\hfq-network-bn\src\hfq_network_bn\core.clj
+badd +1 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\util\user.clj
+badd +1 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\routes\user.clj
+badd +1 \java\clojure\hfq-lisp\hfqsite\TODO
+badd +1 \java\clojure\hfq-lisp\hfqsite\test\hfqsite\test\user-route.clj
+badd +1 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\cfg.clj
+badd +1 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\util.clj
+badd +1 \java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\db\schema.clj
 badd +95 \java\hfq\php\export\tables.txt
-badd +0 \wamp\www\baiyi20111127\libraries\joomla\base\observable.php
-badd +0 \java\hfq\php\userapi.php
-badd +0 \java\hfq\src\com\hfqenterprise\android\gui\MainApplication.java
+badd +1 \wamp\www\baiyi20111127\libraries\joomla\base\observable.php
+badd +1 \java\hfq\php\userapi.php
+badd +1 \java\hfq\src\com\hfqenterprise\android\gui\MainApplication.java
 badd +48 \MC\sc\application\hooks\acl.php
-badd +0 \MC\sc\application\controllers\api\classroom.php
-badd +0 \MC\sc\application\controllers\login.php
-badd +0 \MC\sc\application\controllers\api\lesson.php
-badd +0 \MC\sc\application\controllers\home.php
-badd +0 \MC\sc\shell\lessons_gone.php
-badd +0 \MC\sc\shell\contract_end_remind.php
+badd +1 \MC\sc\application\controllers\api\classroom.php
+badd +1 \MC\sc\application\controllers\login.php
+badd +1 \MC\sc\application\controllers\api\lesson.php
+badd +1 \MC\sc\application\controllers\home.php
+badd +1 \MC\sc\shell\lessons_gone.php
+badd +1 \MC\sc\shell\contract_end_remind.php
 badd +66 \MC\sc\application\controllers\user.php
 badd +10 \doc\js\jquery-appear.imdb.js
-badd +0 \MC\sc\application\controllers\student_select_lesson.php
+badd +1 \MC\sc\application\controllers\student_select_lesson.php
 badd +52 \doc\Erlang\zotonic-release-0.12.1\modules\mod_admin\templates\admin_overview.tpl
-badd +0 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\templates\article.tpl
-badd +0 \doc\Erlang\zotonic-release-0.12.1\build.cmd
-badd +0 \doc\Erlang\zotonic-release-0.12.1\rebar.config.script
+badd +1 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\templates\article.tpl
+badd +1 \doc\Erlang\zotonic-release-0.12.1\build.cmd
+badd +1 \doc\Erlang\zotonic-release-0.12.1\rebar.config.script
 badd +1 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\modules\mod_zmr\services\test.erl
-badd +0 \doc\Erlang\zotonic-release-0.12.1\modules\mod_base\controllers\controller_file.erl
-badd +0 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\modules\mod_vault\templates\admin_vault.tpl
-badd +0 \doc\oCaml\ml3\src\utils\net\http_client.ml
+badd +1 \doc\Erlang\zotonic-release-0.12.1\modules\mod_base\controllers\controller_file.erl
+badd +1 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\modules\mod_vault\templates\admin_vault.tpl
+badd +1 \doc\oCaml\ml3\src\utils\net\http_client.ml
 badd +14 \doc\Erlang\zotonic-release-0.12.1\TODO
-badd +0 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\templates\_admin_edit_content.person.tpl
-badd +0 \java\hfq\src\com\hfqenterprise\android\api\Api.java
-badd +0 \doc\bk\ÓÄÀ¼²Ù.txt
-badd +0 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\jiuweishe.erl
-badd +1 \doc\Lua\neural_network.lua
-badd +1 \java\cc\cc\www\index.html
-badd +0 \java\cc\cc\www\app.js
-badd +65 \doc\C\redis-unstable\redis-unstable\src\redis.h
-badd +0 \java\cc\cc\bin\build_android.sh
-badd +0 \java\cc\cc\bin\build_ios.sh
+badd +1 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\templates\_admin_edit_content.person.tpl
+badd +1 \java\hfq\src\com\hfqenterprise\android\api\Api.java
+badd +1 \doc\bk\ÓÄÀ¼²Ù.txt
+badd +63 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\jiuweishe.erl
+badd +1202 \doc\Lua\neural_network.lua
+badd +45 \java\cc\cc\www\index.html
+badd +1 \java\cc\cc\www\app.js
+badd +124 \doc\C\redis-unstable\redis-unstable\src\redis.h
+badd +1 \java\cc\cc\bin\build_android.sh
+badd +1 \java\cc\cc\bin\build_ios.sh
 badd +269 \doc\Forth\tclforth-master\source\chess_cn.fth
-badd +0 c:\Program\ Files\4tH\examples\web4th.4th
-badd +0 \java\clojure\novel2graphic\TODO
+badd +1 c:\Program\ Files\4tH\examples\web4th.4th
+badd +1 \java\clojure\novel2graphic\TODO
 badd +13 www\bower.json
-badd +0 www\package.json
-badd +0 www\app\scripts\CallCtrl.js
-badd +0 www\Gruntfile.js
-badd +0 www\platforms\android\res\xml\config.xml
+badd +1 www\package.json
+badd +1 www\app\scripts\CallCtrl.js
+badd +1 www\Gruntfile.js
+badd +1 www\platforms\android\res\xml\config.xml
 badd +7 \MC\mclegacy\studyCourse.files.txt
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\template\supplement\template_teachersupplement.php
-badd +0 \MC\sc\application\views\default\teacher.tpl
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\include\useradmin.php
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\template\courseware\template_sidebar.php
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\page-teachersupplement.php
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\script\teacherSupplement.js
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\template\supplement\template_teachersupplement.php
+badd +1 \MC\sc\application\views\default\teacher.tpl
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\include\useradmin.php
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\template\courseware\template_sidebar.php
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\page-teachersupplement.php
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\script\teacherSupplement.js
 badd +378 \MC\mclegacy\wp-content\plugins\wp-restful\service\UserRESTController.php
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\studyCourse.php
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\template\student\template_audition_student.php
-badd +0 \MC\mclegacy\wp-content\themes\onlineschool\include\mailSender\mailSend.conf.php
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\studyCourse.php
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\template\student\template_audition_student.php
+badd +1 \MC\mclegacy\wp-content\themes\onlineschool\include\mailSender\mailSend.conf.php
 badd +20 \MC\crm\apps\frontend\modules\dashboard\actions\actions.class.php
-badd +0 \MC\tm2014\TODO
+badd +1 \MC\tm2014\TODO
 badd +1780 \MC\crm\plugins\tmModulesPlugin\modules\ajax\actions\actions.class.php
-badd +0 \doc\Erlang\zotonic-release-0.12.1\include\zotonic.hrl
+badd +1 \doc\Erlang\zotonic-release-0.12.1\include\zotonic.hrl
 badd +20 \doc\Erlang\zotonic-release-0.12.1\modules\mod_base\controllers\controller_api.erl
-badd +0 \Program\ Files\Vim\vimfiles\syntax\fountain.vim
+badd +1 \Program\ Files\Vim\vimfiles\syntax\fountain.vim
 badd +87 \MC\sc\application\libraries\cls_msg.php
 badd +21 \MC\sc\application\libraries\cls_email.php
 badd +137 \MC\sc\application\models\crmapi_model.php
@@ -347,10 +351,14 @@ badd +3930 \MC\mclegacy\wp-content\themes\onlineschool\functions.php
 badd +1 \MC\mclegacy\auto\tmp.UserRESTController.php
 badd +1 \MC\mclegacy\auto\tmp.functions.php
 badd +17 \MC\crm\lib\tmMail.class.php
-badd +0 \MC\crm\lib\tmMsgger.class.php
+badd +1 \MC\crm\lib\tmMsgger.class.php
 badd +41 \MC\crm\lib\tmUtilClass.class.php
-badd +0 \MC\crm\lib\model\doctrine\TmClassTable.class.php
+badd +1 \MC\crm\lib\model\doctrine\TmClassTable.class.php
 badd +394 \Program\ Files\Vim\_vimrc
+badd +0 \doc\Lisp\delimc-master\src\delimc\core.clj
+badd +0 \doc\Python\email\project\scheduler.py
+badd +0 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\support\c_log.erl
+badd +0 \doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\modules\mod_cc\services\service_cc_user.erl
 args ~\Local\ Settings\Temp\HZ$D.969.2581\edit_lib.erl
 edit \MC\tm2014\components\com_flexicontent\templates\blog\category_items.php
 set splitbelow splitright
@@ -365,10 +373,29 @@ set winheight=1 winwidth=1
 exe '1resize ' . ((&lines * 70 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -480,10 +507,29 @@ lcd E:\mc\tm2014
 wincmd w
 argglobal
 edit E:\MC\tm2014\components\com_flexicontent\controller.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -602,10 +648,29 @@ set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -721,10 +786,29 @@ set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -850,6 +934,25 @@ exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 68 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -963,6 +1066,8 @@ argglobal
 edit E:\MC\mc2014\src\mc2014\routes\game.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -1061,12 +1166,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -1184,6 +1294,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\project.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -1282,12 +1394,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -1460,6 +1577,25 @@ exe '9resize ' . ((&lines * 25 + 37) / 74)
 exe 'vert 9resize ' . ((&columns * 66 + 91) / 182)
 exe '10resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -1573,6 +1709,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfq-network-bn\src\hfq_network_bn\core.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -1671,12 +1809,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -1794,6 +1937,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\util\user.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -1892,12 +2037,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -2015,6 +2165,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\routes\user.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -2113,12 +2265,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -2234,6 +2391,25 @@ lcd E:\java\clojure\hfq-lisp\hfqsite
 wincmd w
 argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\TODO
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -2347,6 +2523,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\test\hfqsite\test\user-route.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -2445,12 +2623,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -2568,6 +2751,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\cfg.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -2666,12 +2851,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -2789,6 +2979,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\util.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -2887,12 +3079,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -3010,6 +3207,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\src\clojure\hfqsite\db\schema.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -3108,12 +3307,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -3231,6 +3435,8 @@ argglobal
 edit E:\java\clojure\hfq-lisp\hfqsite\project.clj
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
 inoremap <buffer> <expr> <Del> PareditDel()
 inoremap <buffer> <expr> <BS> PareditBackspace(0)
 nmap <buffer> gf <Plug>FireplaceTabeditFile
@@ -3329,12 +3535,17 @@ vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
 vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
 nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
 map! <buffer> ( <Plug>FireplaceRecall
 inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
 inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
 inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
 inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
 inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
 inoremap <buffer> <expr> { PareditInsertOpening('{','}')
 inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
@@ -3487,6 +3698,25 @@ exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 44 + 37) / 74)
 exe '4resize ' . ((&lines * 23 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -3598,10 +3828,29 @@ lcd E:\java\hfq
 wincmd w
 argglobal
 edit E:\wamp\www\baiyi20111127\libraries\joomla\base\observable.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -3713,10 +3962,29 @@ lcd E:\java\hfq
 wincmd w
 argglobal
 edit E:\java\hfq\php\userapi.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -3828,6 +4096,25 @@ lcd E:\java\hfq
 wincmd w
 argglobal
 edit E:\java\hfq\src\com\hfqenterprise\android\gui\MainApplication.java
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -3978,10 +4265,29 @@ exe '6resize ' . ((&lines * 1 + 37) / 74)
 exe '7resize ' . ((&lines * 1 + 37) / 74)
 exe '8resize ' . ((&lines * 58 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4093,10 +4399,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\application\controllers\api\classroom.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4208,10 +4533,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\application\controllers\login.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4323,10 +4667,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\application\controllers\api\lesson.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4438,10 +4801,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\application\controllers\home.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4553,10 +4935,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\shell\lessons_gone.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4668,10 +5069,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\shell\contract_end_remind.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4783,10 +5203,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\application\controllers\user.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -4917,6 +5356,25 @@ set winheight=1 winwidth=1
 exe '1resize ' . ((&lines * 12 + 37) / 74)
 exe '2resize ' . ((&lines * 59 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5028,10 +5486,29 @@ lcd E:\mc\sc
 wincmd w
 argglobal
 edit E:\MC\sc\application\controllers\student_select_lesson.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -5164,6 +5641,25 @@ exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
 exe '4resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5275,6 +5771,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\templates\article.tpl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5386,6 +5901,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\build.cmd
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5497,6 +6031,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\rebar.config.script
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5631,6 +6184,25 @@ exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 62 + 37) / 74)
 exe '4resize ' . ((&lines * 5 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5742,6 +6314,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\modules\mod_base\controllers\controller_file.erl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5853,6 +6444,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\modules\mod_vault\templates\admin_vault.tpl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -5966,6 +6576,9 @@ argglobal
 edit E:\doc\oCaml\ml3\src\utils\net\http_client.ml
 let s:cpo_save=&cpo
 set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 vmap <buffer> \C <Plug>BUncomOff
 nmap <buffer> \C <Plug>LUncomOff
 vmap <buffer> \c <Plug>BUncomOn
@@ -5974,6 +6587,18 @@ vnoremap <buffer> <Plug>BUncomOff :'<,'>`<dd`>dd`<
 vnoremap <buffer> <Plug>BUncomOn :'<,'>`<O0i(*`>o0i*)`<
 nnoremap <buffer> <Plug>LUncomOff :s/^(\* \(.*\) \*)/\1/:noh
 nnoremap <buffer> <Plug>LUncomOn mz0i(* $A *)`z
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
 iabbr <buffer> ASS (assert (0=1) (* XXX *))
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -6100,7 +6725,13 @@ wincmd _ | wincmd |
 split
 wincmd _ | wincmd |
 split
-4wincmd k
+wincmd _ | wincmd |
+split
+wincmd _ | wincmd |
+split
+6wincmd k
+wincmd w
+wincmd w
 wincmd w
 wincmd w
 wincmd w
@@ -6113,8 +6744,29 @@ exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
 exe '4resize ' . ((&lines * 1 + 37) / 74)
-exe '5resize ' . ((&lines * 64 + 37) / 74)
+exe '5resize ' . ((&lines * 36 + 37) / 74)
+exe '6resize ' . ((&lines * 25 + 37) / 74)
+exe '7resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -6226,6 +6878,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\templates\_admin_edit_content.person.tpl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -6337,6 +7008,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\java\hfq\src\com\hfqenterprise\android\api\Api.java
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -6448,6 +7138,25 @@ lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
 edit E:\doc\bk\ÓÄÀ¼²Ù.txt
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -6558,7 +7267,26 @@ normal! 040l
 lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 argglobal
-edit E:\doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\jiuweishe.erl
+edit E:\doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\support\c_log.erl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -6660,36 +7388,321 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 48 - ((47 * winheight(0) + 32) / 64)
+let s:l = 1 - ((0 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-48
-normal! 060l
+1
+normal! 0
+lcd E:\doc\Erlang\zotonic-release-0.12.1
+wincmd w
+argglobal
+edit E:\doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\modules\mod_cc\services\service_cc_user.erl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=Acomplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'erlang'
+setlocal filetype=erlang
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=ErlangIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=end,0=of,0=catch,0=after,0=when,0=),0=],0=},0=>>
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,128-167,224-235,?,-,*,!,+,/,=,<,>,.,:,$,@-@
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=sqlcomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},0)
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'erlang'
+setlocal syntax=erlang
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 168 - ((12 * winheight(0) + 12) / 25)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+168
+normal! 044l
+lcd E:\doc\Erlang\zotonic-release-0.12.1
+wincmd w
+argglobal
+edit E:\doc\Erlang\zotonic-release-0.12.1\user\sites\jiuweishe\jiuweishe.erl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=Acomplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'erlang'
+setlocal filetype=erlang
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=ErlangIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=end,0=of,0=catch,0=after,0=when,0=),0=],0=},0=>>
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,128-167,224-235,?,-,*,!,+,/,=,<,>,.,:,$,@-@
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=sqlcomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},0)
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'erlang'
+setlocal syntax=erlang
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 63 - ((0 * winheight(0) + 0) / 1)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+63
+normal! 04l
 lcd E:\doc\Erlang\zotonic-release-0.12.1
 wincmd w
 exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
 exe '4resize ' . ((&lines * 1 + 37) / 74)
-exe '5resize ' . ((&lines * 64 + 37) / 74)
+exe '5resize ' . ((&lines * 36 + 37) / 74)
+exe '6resize ' . ((&lines * 25 + 37) / 74)
+exe '7resize ' . ((&lines * 1 + 37) / 74)
 tabedit E:\doc\Lua\neural_network.lua
 set splitbelow splitright
 wincmd _ | wincmd |
 split
 wincmd _ | wincmd |
 split
-2wincmd k
+wincmd _ | wincmd |
+split
+3wincmd k
+wincmd w
 wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 68 + 37) / 74)
+exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
-exe '3resize ' . ((&lines * 1 + 37) / 74)
+exe '3resize ' . ((&lines * 66 + 37) / 74)
+exe '4resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -6791,7 +7804,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+let s:l = 1 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -6800,7 +7813,254 @@ normal! 0
 lcd E:\java\cc\cc\www
 wincmd w
 argglobal
+edit E:\doc\Lisp\delimc-master\src\delimc\core.clj
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
+nmap <buffer> gf <Plug>FireplaceTabeditFile
+nmap <buffer>  <Plug>FireplaceSplitFile
+nmap <buffer> f <Plug>FireplaceSplitFile
+nmap <buffer> gd <Plug>FireplaceDtabjump
+nmap <buffer> d <Plug>FireplaceDsplit
+nmap <buffer>  <Plug>FireplaceDsplit
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
+nmap <buffer> [d <Plug>FireplaceSource
+nmap <buffer> [ <Plug>FireplaceDjump
+nmap <buffer> <silent> \p <Plug>ClojureCloseResultBuffer.
+nmap <buffer> <silent> \sR <Plug>ClojureStartLocalRepl.
+nmap <buffer> <silent> \sr <Plug>ClojureStartRepl.
+nmap <buffer> <silent> \ep <Plug>ClojureEvalParagraph.
+nmap <buffer> <silent> \et <Plug>ClojureEvalToplevel.
+vmap <buffer> <silent> \eb <Plug>ClojureEvalBlock.
+nmap <buffer> <silent> \el <Plug>ClojureEvalLine.
+nmap <buffer> <silent> \ef <Plug>ClojureEvalFile.
+nmap <buffer> <silent> \m1 <Plug>ClojureMacroExpand1.
+nmap <buffer> <silent> \me <Plug>ClojureMacroExpand.
+nmap <buffer> <silent> \rt <Plug>ClojureRunTests.
+nmap <buffer> <silent> \rF <Plug>ClojureRequireFileAll.
+nmap <buffer> <silent> \rf <Plug>ClojureRequireFile.
+nmap <buffer> <silent> \gi <Plug>ClojureGotoSourceInteractive.
+nmap <buffer> <silent> \gw <Plug>ClojureGotoSourceWord.
+nmap <buffer> <silent> \si <Plug>ClojureSourceLookupInteractive.
+nmap <buffer> <silent> \sw <Plug>ClojureSourceLookupWord.
+nmap <buffer> <silent> \mi <Plug>ClojureMetaLookupInteractive.
+nmap <buffer> <silent> \mw <Plug>ClojureMetaLookupWord.
+nmap <buffer> <silent> \fd <Plug>ClojureFindDoc.
+nmap <buffer> <silent> \ji <Plug>ClojureJavadocLookupInteractive.
+nmap <buffer> <silent> \jw <Plug>ClojureJavadocLookupWord.
+nmap <buffer> <silent> \li <Plug>ClojureDocLookupInteractive.
+nmap <buffer> <silent> \lw <Plug>ClojureDocLookupWord.
+nmap <buffer> <silent> \tr <Plug>ClojureToggleParenRainbow.
+nmap <buffer> <silent> \aw <Plug>ClojureAddToLispWords.
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
+nmap <buffer> ]d <Plug>FireplaceSource
+nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
+nnoremap <buffer> <silent> cpr :if expand('%:e') ==# 'cljs'|Require|else|RunTests|endif
+nmap <buffer> cqc <Plug>FireplacePrompti
+nmap <buffer> cqp <Plug>FireplacePrompt
+nmap <buffer> cqq <Plug>FireplaceCountEdit
+nmap <buffer> cq <Plug>FireplaceEdit
+nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
+nmap <buffer> c1m <Plug>Fireplace1MacroExpand
+nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
+nmap <buffer> cm <Plug>FireplaceMacroExpand
+nmap <buffer> c!! <Plug>FireplaceCountFilter
+nmap <buffer> c! <Plug>FireplaceFilter
+nmap <buffer> cpp <Plug>FireplaceCountPrint
+nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
+nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+map! <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+imap <buffer> ' <Plug>delimitMate'
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+imap <buffer> ` <Plug>delimitMate`
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:;\ -,mO:;\ \ ,n:;
+setlocal commentstring=;%s
+setlocal complete=.,w,b,u,t,i,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.core.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.inspector.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.java.browse.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.java.io.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.java.javadoc.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.java.shell.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.main.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.pprint.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.repl.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.set.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.stacktrace.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.string.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.template.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.test.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.test.tap.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.test.junit.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.walk.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.xml.txt,kE:\\Program\\\ Files\\Vim\\vimfiles\\ftplugin\\clojure\\completions-clojure.zip.txt
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=Acomplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=^\\s*(def\\w*
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'clojure'
+setlocal filetype=clojure
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetClojureIndent()
+setlocal indentkeys=!,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,128-167,224-235,?,-,*,!,+,/,=,<,>,.,:
+setlocal keywordprg=:Doc
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=fireplace#omnicomplete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},0)
+setlocal suffixesadd=.clj,.cljx,.cljs,.java
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'clojure'
+setlocal syntax=clojure
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 10 - ((0 * winheight(0) + 0) / 1)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+10
+normal! 0
+lcd E:\java\cc\cc\www
+wincmd w
+argglobal
 edit E:\java\cc\cc\www\index.html
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -6823,8 +8083,10 @@ setlocal completefunc=Acomplete
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
+set cursorcolumn
+setlocal cursorcolumn
+set cursorline
+setlocal cursorline
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -6885,7 +8147,7 @@ setlocal nospell
 setlocal spellcapcheck=
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},0)
+setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},1)
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
@@ -6902,7 +8164,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 45 - ((0 * winheight(0) + 0) / 1)
+let s:l = 45 - ((0 * winheight(0) + 33) / 66)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -6912,6 +8174,25 @@ lcd E:\java\cc\cc\www
 wincmd w
 argglobal
 edit E:\java\cc\cc\www\app.js
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7021,9 +8302,11 @@ normal! zt
 normal! 067l
 lcd E:\java\cc\cc\www
 wincmd w
-exe '1resize ' . ((&lines * 68 + 37) / 74)
+3wincmd w
+exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
-exe '3resize ' . ((&lines * 1 + 37) / 74)
+exe '3resize ' . ((&lines * 66 + 37) / 74)
+exe '4resize ' . ((&lines * 1 + 37) / 74)
 tabedit E:\doc\C\redis-unstable\redis-unstable\src\redis.h
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -7037,10 +8320,29 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 68 + 37) / 74)
-exe '2resize ' . ((&lines * 1 + 37) / 74)
+exe '1resize ' . ((&lines * 1 + 37) / 74)
+exe '2resize ' . ((&lines * 68 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7142,7 +8444,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 65 - ((0 * winheight(0) + 34) / 68)
+let s:l = 65 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -7152,6 +8454,25 @@ lcd E:\java\cc\cc\www
 wincmd w
 argglobal
 edit E:\java\cc\cc\bin\build_android.sh
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7253,7 +8574,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 0) / 1)
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -7263,6 +8584,25 @@ lcd E:\java\cc\cc\www
 wincmd w
 argglobal
 edit E:\java\cc\cc\bin\build_ios.sh
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7372,9 +8712,145 @@ normal! zt
 normal! 0
 lcd E:\java\cc\cc\www
 wincmd w
-exe '1resize ' . ((&lines * 68 + 37) / 74)
-exe '2resize ' . ((&lines * 1 + 37) / 74)
+3wincmd w
+exe '1resize ' . ((&lines * 1 + 37) / 74)
+exe '2resize ' . ((&lines * 68 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
+tabedit E:\doc\Python\email\project\scheduler.py
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=Acomplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'python'
+setlocal filetype=python
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=2
+setlocal imsearch=2
+setlocal include=s*\\(from\\|import\\)
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetPythonIndent(v:lnum)
+setlocal indentkeys=0{,0},:,!^F,o,O,e,<:>,=elif,=except
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,128-167,224-235
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=pythoncomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},0)
+setlocal suffixesadd=.py
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'python'
+setlocal syntax=python
+endif
+setlocal tabstop=8
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 121 - ((0 * winheight(0) + 36) / 72)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+121
+normal! 020l
+lcd E:\doc\Python\email
+3wincmd w
 tabedit E:\doc\Forth\tclforth-master\source\chess_cn.fth
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -7392,6 +8868,25 @@ exe '1resize ' . ((&lines * 24 + 37) / 74)
 exe '2resize ' . ((&lines * 23 + 37) / 74)
 exe '3resize ' . ((&lines * 23 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7503,6 +8998,25 @@ lcd E:\java\cc\cc\www
 wincmd w
 argglobal
 edit c:\Program\ Files\4tH\examples\web4th.4th
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7614,6 +9128,25 @@ lcd E:\java\cc\cc\www
 wincmd w
 argglobal
 edit E:\java\clojure\novel2graphic\TODO
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7715,14 +9248,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 9 - ((0 * winheight(0) + 11) / 23)
+let s:l = 1 - ((0 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
+1
 normal! 0
 lcd E:\java\cc\cc\www
 wincmd w
+3wincmd w
 exe '1resize ' . ((&lines * 24 + 37) / 74)
 exe '2resize ' . ((&lines * 23 + 37) / 74)
 exe '3resize ' . ((&lines * 23 + 37) / 74)
@@ -7751,6 +9285,25 @@ exe '3resize ' . ((&lines * 1 + 37) / 74)
 exe '4resize ' . ((&lines * 51 + 37) / 74)
 exe '5resize ' . ((&lines * 14 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7862,6 +9415,25 @@ lcd E:\java\cc\phonertc\www
 wincmd w
 argglobal
 edit E:\java\cc\phonertc\www\package.json
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -7973,6 +9545,25 @@ lcd E:\java\cc\phonertc\www
 wincmd w
 argglobal
 edit E:\java\cc\phonertc\www\app\scripts\CallCtrl.js
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -8084,6 +9675,25 @@ lcd E:\java\cc\phonertc\www
 wincmd w
 argglobal
 edit E:\java\cc\phonertc\www\Gruntfile.js
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -8195,6 +9805,25 @@ lcd E:\java\cc\phonertc\www
 wincmd w
 argglobal
 edit E:\java\cc\phonertc\www\platforms\android\res\xml\config.xml
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -8304,6 +9933,7 @@ normal! zt
 normal! 0
 lcd E:\java\cc\phonertc\www
 wincmd w
+3wincmd w
 exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
@@ -8358,6 +9988,25 @@ exe '9resize ' . ((&lines * 1 + 37) / 74)
 exe '10resize ' . ((&lines * 1 + 37) / 74)
 exe '11resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -8469,10 +10118,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\template\supplement\template_teachersupplement.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -8584,6 +10252,25 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\sc\application\views\default\teacher.tpl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -8695,10 +10382,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\include\useradmin.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -8810,10 +10516,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\template\courseware\template_sidebar.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -8925,10 +10650,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\page-teachersupplement.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -9040,6 +10784,25 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\script\teacherSupplement.js
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -9151,10 +10914,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\functions.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -9266,10 +11048,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\studyCourse.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -9381,10 +11182,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\template\student\template_audition_student.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -9496,10 +11316,29 @@ lcd E:\mc\mclegacy
 wincmd w
 argglobal
 edit E:\MC\mclegacy\wp-content\themes\onlineschool\include\mailSender\mailSend.conf.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -9609,6 +11448,7 @@ normal! zt
 normal! 0
 lcd E:\mc\mclegacy
 wincmd w
+3wincmd w
 exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
@@ -9632,10 +11472,7 @@ wincmd _ | wincmd |
 split
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-6wincmd k
-wincmd w
+5wincmd k
 wincmd w
 wincmd w
 wincmd w
@@ -9649,14 +11486,32 @@ exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
 exe '4resize ' . ((&lines * 1 + 37) / 74)
-exe '5resize ' . ((&lines * 1 + 37) / 74)
-exe '6resize ' . ((&lines * 60 + 37) / 74)
-exe '7resize ' . ((&lines * 1 + 37) / 74)
+exe '5resize ' . ((&lines * 62 + 37) / 74)
+exe '6resize ' . ((&lines * 1 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -9768,6 +11623,25 @@ lcd E:\mc\crm
 wincmd w
 argglobal
 edit E:\MC\tm2014\TODO
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -9879,10 +11753,29 @@ lcd E:\mc\crm
 wincmd w
 argglobal
 edit E:\MC\crm\lib\tmMsgger.class.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -9994,10 +11887,29 @@ lcd E:\mc\crm
 wincmd w
 argglobal
 edit E:\MC\crm\lib\model\doctrine\TmClassTable.class.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -10108,116 +12020,30 @@ normal! 033l
 lcd E:\mc\crm
 wincmd w
 argglobal
-enew
-file E:\MC\crm\NERD_tree_7
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal balloonexpr=
-setlocal nobinary
-setlocal bufhidden=hide
-setlocal nobuflisted
-setlocal buftype=nofile
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=Acomplete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'nerdtree'
-setlocal filetype=nerdtree
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,128-167,224-235,?,-,*,!,+,/,=,<,>,.,:
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal nomodifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=sqlcomplete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},0)
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'nerdtree'
-setlocal syntax=nerdtree
-endif
-setlocal tabstop=8
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal nowrap
-setlocal wrapmargin=0
-lcd E:\mc\crm
-wincmd w
-argglobal
 edit E:\MC\crm\lib\tmMail.class.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -10240,10 +12066,8 @@ setlocal completefunc=Acomplete
 setlocal nocopyindent
 setlocal cryptmethod=
 setlocal nocursorbind
-set cursorcolumn
-setlocal cursorcolumn
-set cursorline
-setlocal cursorline
+setlocal nocursorcolumn
+setlocal nocursorline
 setlocal define=
 setlocal dictionary=
 setlocal nodiff
@@ -10304,7 +12128,7 @@ setlocal nospell
 setlocal spellcapcheck=
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},1)
+setlocal statusline=%!Pl#GetStatusline({'noncurrent':\ '%(%#Plef4e4e4eeb262626N#%(%#Pl58870000eb262626N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Plf58a8a8aeb262626b#\ %t\ %)%(%#Pl58870000eb262626N#%M\ %)%(%#Plef4e4e4eeb262626N#%H%W\ %)%#Pleb262626e9121212N#%)%=%(%#Plea1c1c1ce9121212N#%#Plf1626262ea1c1c1cN#\ %3p%%\ %)%(%#Pleb262626ea1c1c1cN#%#Plf1626262eb262626N#%(%#Plf58a8a8aeb262626N#\ LN\ %3l%)%(%#Plf1626262eb262626N#:%-2c\ %)%)',\ 'current':\ '%(%#Pl16005f0094afd700b#\ \ %-2{Stl_GetMode()}\ %#Pl94afd700f0585858N#%)%(%#Plfabcbcbcf0585858N#%(%#Plc4ff0000f0585858N#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7fffffff0585858b#\ %t\ %)%(%#Plc4ff0000f0585858b#%M\ %)%(%#Plfabcbcbcf0585858N#%H%W\ %)%#Plf0585858ec303030N#%)%=%(%#Plec303030ec303030N#%#Plf6949494ec303030N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Plf6949494ec303030N#%%#Plf6949494ec303030N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Plf0585858ec303030N#%#Plfabcbcbcf0585858N#\ %3p%%\ %)%(%#Plfcd0d0d0f0585858N#%#Plfabcbcbcfcd0d0d0N#%(%#Plec303030fcd0d0d0b#\ LN\ %3l%)%(%#Plf4808080fcd0d0d0N#:%-2c\ %)%)',\ 'insert':\ '%(%#Pl17005f5fe7ffffffb#\ \ %-2{Stl_GetMode()}\ %#Ple7ffffff1f0087afN#%)%(%#Pl7587d7ff1f0087afN#%(%#Plc4ff00001f0087afN#%{&readonly\ ?\ ''\ RO''\ :\ ''''}%)%(%#Ple7ffffff1f0087afb#\ %t\ %)%(%#Plc4ff00001f0087afb#%M\ %)%(%#Pl7587d7ff1f0087afN#%H%W\ %)%#Pl1f0087af18005f87N#%)%=%(%#Pl18005f8718005f87N#%#Pl4b5fafff18005f87N#%{&fileformat}\ %{(&fenc\ ==\ ''''\ ?\ &enc\ :\ &fenc)}\ %{(exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\"}%)%(%#Pl4b5fafff18005f87N#%%#Pl4b5fafff18005f87N#\ FT\ %{strlen(&ft)\ ?\ &ft\ :\ ''n/a''}\ %)%(%#Pl1f0087af18005f87N#%#Pl7587d7ff1f0087afN#\ %3p%%\ %)%(%#Pl7587d7ff1f0087afN#%#Pl7587d7ff7587d7ffN#%(%#Pl17005f5f7587d7ffb#\ LN\ %3l%)%(%#Pl17005f5f7587d7ffN#:%-2c\ %)%)'},0)
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
@@ -10321,7 +12145,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 27 - ((26 * winheight(0) + 30) / 60)
+let s:l = 27 - ((26 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -10331,10 +12155,29 @@ lcd E:\mc\crm
 wincmd w
 argglobal
 edit E:\MC\crm\plugins\tmModulesPlugin\modules\ajax\actions\actions.class.php
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
 nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -10444,14 +12287,13 @@ normal! zt
 normal! 024l
 lcd E:\mc\crm
 wincmd w
-6wincmd w
+3wincmd w
 exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 1 + 37) / 74)
 exe '4resize ' . ((&lines * 1 + 37) / 74)
-exe '5resize ' . ((&lines * 1 + 37) / 74)
-exe '6resize ' . ((&lines * 60 + 37) / 74)
-exe '7resize ' . ((&lines * 1 + 37) / 74)
+exe '5resize ' . ((&lines * 62 + 37) / 74)
+exe '6resize ' . ((&lines * 1 + 37) / 74)
 tabedit E:\java\cc\cc\www\index.html
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -10473,6 +12315,25 @@ exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 55 + 37) / 74)
 exe '4resize ' . ((&lines * 12 + 37) / 74)
 argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -10584,6 +12445,25 @@ lcd E:\java\cc
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\include\zotonic.hrl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -10695,6 +12575,25 @@ lcd E:\java\cc
 wincmd w
 argglobal
 edit E:\doc\Erlang\zotonic-release-0.12.1\modules\mod_base\controllers\controller_api.erl
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -10806,6 +12705,11 @@ lcd E:\java\cc
 wincmd w
 argglobal
 edit E:\Program\ Files\Vim\vimfiles\syntax\fountain.vim
+let s:cpo_save=&cpo
+set cpo&vim
+imap <buffer> <S-Tab> <Plug>delimitMateS-Tab
+imap <buffer> <S-BS> <Plug>delimitMateS-BS
+imap <buffer> <BS> <Plug>delimitMateBS
 vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
 nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
 vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*endf*\%[unction]\>', "bW")
@@ -10818,6 +12722,20 @@ vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*endf*\%[un
 nnoremap <buffer> <silent> ][ m':call search('^\s*endf*\%[unction]\>', "W")
 vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "W")
 nnoremap <buffer> <silent> ]] m':call search('^\s*fu\%[nction]\>', "W")
+imap <buffer> <silent> g <Plug>delimitMateJumpMany
+imap <buffer>  <Plug>delimitMateBS
+imap <buffer>  <Plug>delimitMateCR
+imap <buffer> " <Plug>delimitMate"
+imap <buffer> ' <Plug>delimitMate'
+imap <buffer> ( <Plug>delimitMate(
+imap <buffer> ) <Plug>delimitMate)
+imap <buffer> [ <Plug>delimitMate[
+imap <buffer> ] <Plug>delimitMate]
+imap <buffer> ` <Plug>delimitMate`
+imap <buffer> { <Plug>delimitMate{
+imap <buffer> } <Plug>delimitMate}
+let &cpo=s:cpo_save
+unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -10927,12 +12845,12 @@ normal! zt
 normal! 049l
 lcd E:\java\cc
 wincmd w
-6wincmd w
+3wincmd w
 exe '1resize ' . ((&lines * 1 + 37) / 74)
 exe '2resize ' . ((&lines * 1 + 37) / 74)
 exe '3resize ' . ((&lines * 55 + 37) / 74)
 exe '4resize ' . ((&lines * 12 + 37) / 74)
-tabnext 17
+tabnext 12
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif

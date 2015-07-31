@@ -358,6 +358,9 @@ let g:shell_fullscreen_always_on_top = 0
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+nnoremap ,e :call SessionSaveTo()<CR>
+nnoremap ,o :call SessionOpenBy()<CR>
+
 
 
 " :arg *.c 	All *.c files in current directory.
@@ -391,10 +394,14 @@ au FocusLost * silent! up
 "     setlocal iskeyword=@,48-57,_,128-167,224-235
 "     but in the work session some file is 
 "     setlocal iskeyword=@,48-57,_,128-167,224-235,?,-,*,!,+,/,=,<,>,.,:
+"     clojure setlocal iskeyword=@,48-57,_,128-167,224-235,?,-,*,!,+,/,=,<,>,.,:,#
 "     it is not right, use the first line!
 function! ResetKeyWord ()
     setlocal iskeyword=@,48-57,_,128-167,224-235
 endfunction
+" XXX after open clojure or other code, iskeyword will changed, even open other
+"     file iskeyword still is prev setting, use below line to control
+au FileType php,python,c,java,javascript,html,htm,smarty,json call ResetKeyWord()
 
 " au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorline   " 高亮当前行
 au FileType php,python,c,java,javascript,html,htm,smarty,json setl cursorcolumn " 高亮当前列
@@ -418,17 +425,55 @@ au BufRead,BufNewFile *.fountain set filetype=fountain
 
 
 
-
 function! InitTask()
     :silent !D:\tools\putty username@ip -pw "iX^H.ygl~cl1A0t/s*=="
     :silent !"C:\Program Files\Mozilla Firefox\firefox.exe"
     :source D:\doc\mksession
 endfunction
 
-function! CleanSessionBuf()
-    let fn = 'E:\doc\mksession'
+let s:sssDir = $VIM . '/session/'
+
+" TODO use diction as namespace for Session...
+function! SessionCleanBuf()
+    " let fn = 'E:\doc\mksession'
+    let fn = s:sssDir . 'cc.sss'
     let fl = readfile(fn, 'b')
     call writefile(filter(fl, 'v:val !~? "badd.*$"'), fn, 'b')
+endfunction
+ 
+function! SessionOpenBy()
+    " auto complete on filename
+    " let filename = input('Save to session: ', '', 'file')
+    " custom auto complete, 'custom,SessionFileComplete' can't contain space around ',' 
+    let filename = input('Open session: ', '', 'custom,SessionFileComplete')
+    if filename != ''
+        " mksession is commond, not function, can't direct read var, must use execute
+        " mksession! $VIM . '\\session\\' . filename
+        execute ':so ' . s:sssDir . filename
+    else
+        echo 'Canceled!'
+    endif
+endfunction
+
+function! SessionSaveTo()
+    " auto complete on filename
+    " let filename = input('Save to session: ', '', 'file')
+    " custom auto complete, 'custom,SessionFileComplete' can't contain space around ',' 
+    let filename = input('Save to session: ', '', 'custom,SessionFileComplete')
+    if filename != ''
+        " mksession is commond, not function, can't direct read var, must use execute
+        " mksession! $VIM . '\\session\\' . filename
+        execute ':mksession! ' . s:sssDir . filename
+        echo 'Saved'
+    else
+        echo 'Canceled!'
+    endif
+endfunction
+
+function! SessionFileComplete(A, L, P)
+    return 
+    join(map(split(globpath(s:sssDir, '*'), "\n"), 
+                        'split(v:val, "\\")[-1]'), "\n")
 endfunction
 
 function! NERDTreeReopen()
