@@ -182,17 +182,17 @@ by Prelude.")
             (setq buffers (cdr buffers)))
           (setq screens (cdr screens))))))
 
-(elscreen-start)
-(setq elscreen-prefix-key "\C-t")
+;; (elscreen-start)
+;; (setq elscreen-prefix-key "\C-t")
 
-(push #'elscreen-store kill-emacs-hook)
-(elscreen-restore)
+;; (push #'elscreen-store kill-emacs-hook)
+;; (elscreen-restore)
 
 ;; hide it
 ;; (setq elscreen-display-tab nil)
-(setq elscreen-display-tab 3)
-(setq elscreen-tab-display-control nil)
-(setq elscreen-tab-display-kill-screen nil)
+;; (setq elscreen-display-tab 3)
+;; (setq elscreen-tab-display-control nil)
+;; (setq elscreen-tab-display-kill-screen nil)
 
 (require 'paredit)
 (paredit-mode)
@@ -224,7 +224,27 @@ by Prelude.")
 ;; http://stackoverflow.com/questions/5377960/whats-the-best-practice-to-git-clone-into-an-existing-folder
 
 
-(load "elpa/evil-visual-mark-mode.el")
+;; http://timothypratley.blogspot.com/2015/07/seven-specialty-emacs-settings-with-big.html
+;; (defun cider-eval-expression-at-point-in-repl ()
+;;   "DOC."
+;;   (interactive)
+;;   (let ((form (cider-defun-at-point)))
+;;     ;; Strip excess whitespace
+;;     (while (string-match "\\`\s+\\|\n+\\'" form)
+;;       (setq form (replace-match "" t t form)))
+;;     (set-buffer (cider-get-repl-buffer))
+;;     (goto-char (point-max))
+;;     (insert form)
+;;     (cider-repl-return)))
+;;
+;; (require 'cider-mode)
+;; (define-key cider-mode-map
+;;   (kbd "C-;") 'cider-eval-expression-at-point-in-repl)
+;;
+
+;; this path can't load el file, but also can exec in M-x
+;; (load "elpa/evil-visual-mark-mode.el")
+;; (load "~/.emacs.d/elpa/evil-visual-mark-mode.el")
 ;; run evil-visual-mark-mode
 (require 'evil-visual-mark-mode)
 
