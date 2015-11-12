@@ -47,6 +47,8 @@ au FileType html,tpl,php let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.php"
 
+let g:editorconfig_Beautifier = 'E:/Program Files/Vim/.editorconfig'
+
 filetype plugin indent on
 
 colorscheme emacsredux.com
@@ -139,6 +141,8 @@ if has("autocmd")
     au BufEnter * noremap <A-/> :call Komment('\/\/')<CR>
     au BufEnter *.erl noremap <silent> <A-/> :call Komment('%%')<CR>
     au BufEnter *.clj noremap <silent> <A-/> :call Komment(';;')<CR>
+    au BufEnter *.py noremap <silent> <A-/> :call Komment('#')<CR>
+    au BufEnter *.html noremap <silent> <A-/> :call KommentMulti('html')<CR>
 endif
 
 let s:tmpdir = "c:/tmp/"
@@ -176,8 +180,10 @@ noremap <A-r> cqp
 " It's 2011.
 noremap j gj
 noremap k gk
-noremap <A-k> 5k
-noremap <A-j> 5j
+" noremap <A-k> 5k
+noremap <A-k> kkkkk
+" noremap <A-j> 5j
+noremap <A-j> jjjjj
 
 nnoremap <SPACE> gt
 nnoremap <S-SPACE> gT
@@ -209,12 +215,17 @@ nnoremap <C-J> :!E:\wamp\bin\php\php5.3.0\php -l %<CR>
  
 nnoremap <silent> <A-/> :call Komment('\/\/')<CR>
 vnoremap <silent> <A-/> :call Komment('\/\/')<CR>
-nnoremap <silent> ,/ :call KommentMulti()<CR>
-vnoremap <silent> ,/ :call KommentMulti()<CR>
+nnoremap <silent> ,/ :call KommentMulti('c')<CR>
+vnoremap <silent> ,/ :call KommentMulti('c')<CR>
 
 " ssh
 nnoremap <C-h>1 :!E:\download\putty username@ip -P 26299 -pw ...<CR>
 nnoremap <C-h>2 :!E:\download\putty ip -P 26299 -l username<CR> 
+
+" TODO use shell to manage remote db, not web
+nnoremap <C-h>3 :!E:\wamp\bin\mysql\mysql5.1.36\bin\mysql -h 110.76.45.148 -u root -p<CR> 
+
+
 " win folder
 nnoremap <S-h>1 :silent !explorer.exe D:\program\wamp\www\mandarincafe<CR>
 nnoremap <S-h>2 :silent !explorer.exe D:\program\wamp\www\tmus\home\tmus\htdocs<CR>
@@ -226,8 +237,10 @@ nnoremap <LocalLeader>tm :silent !explorer.exe D:\program\wamp\www\tmus\home\tmu
 nnoremap <LocalLeader>crm :silent !explorer.exe D:\program\wamp\www\crm<CR>
 nnoremap <LocalLeader>mc :silent !explorer.exe D:\program\wamp\www\mandarincafe<CR>
 
-nnoremap ,c :new D:\doc\work<CR> 
-nnoremap <C-h>d :new D:\doc\work<CR> 
+" nnoremap ,c :new E:\doc\mc-work<CR> 
+nnoremap <C-h>e :new E:\doc\mc-work<CR> 
+nnoremap <C-h>c :new E:\doc\baiyi.txt<CR> 
+nnoremap <C-h>d :new E:\doc\baiyi-bak.txt<CR> 
      
 nnoremap <S-l> :call MakLastSea()<CR>
 " nnoremap <C-l> :match none<CR>
@@ -254,8 +267,10 @@ nnoremap <LocalLeader>r :call GenerateRestrict()<CR>
 
 nnoremap <A-/> :call Komment('\/\/')<CR>
 
-nnoremap <C-M> <C-W><S-+>
-nnoremap <C-N> <C-W><S-->
+" XXX this number prefix also works, but notsmoothly
+" nnoremap <C-M> <C-W>6<S-+>
+nnoremap <C-M> <C-W><S-+><C-W><S-+><C-W><S-+><C-W><S-+><C-W><S-+><C-W><S-+>
+nnoremap <C-N> <C-W><S--><C-W><S--><C-W><S--><C-W><S--><C-W><S--><C-W><S-->
 nnoremap <A-m> <C-W>77|
 nnoremap <A-n> <C-W>33|
 nunmap <S-N>
@@ -358,6 +373,7 @@ let g:shell_fullscreen_always_on_top = 0
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+" FIXME may have map dup times, so filename autocomplete can't works
 nnoremap ,e :call SessionSaveTo()<CR>
 nnoremap ,o :call SessionOpenBy()<CR>
 
@@ -849,7 +865,7 @@ function! Komment(cmt)
 
 endfunction
 
-function! KommentMulti()
+function! KommentMulti(type)
   let text = getline(".")
 
   if text =~ '^\s*\/\*' || text =~ '^\/\*'
@@ -858,8 +874,13 @@ function! KommentMulti()
     " s/^\/\///
     " let @/=hls
    else
-    s/^\(\s*\)\(\S*\)/\1\/\* \2/            
-    s/\(.*\)$/\1 \*\//            
+       if a:type == 'c'
+           s/^\(\s*\)\(\S*\)/\1\/\* \2/            
+           s/\(.*\)$/\1 \*\//            
+       else
+           s/^\(\s*\)\(\S*\)/\1<\!-- \2/            
+           s/\(.*\)$/\1 -->/            
+       endif
     " let hls=@/
     " s/^/\/\//
     " let @/=hls
