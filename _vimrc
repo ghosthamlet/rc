@@ -239,7 +239,7 @@ nnoremap <LocalLeader>mc :silent !explorer.exe D:\program\wamp\www\mandarincafe<
 
 " nnoremap ,c :new E:\doc\mc-work<CR> 
 nnoremap <C-h>e :new E:\doc\mc-work<CR> 
-nnoremap <C-h>c :new E:\doc\baiyi.txt<CR> 
+nnoremap <C-h>f :new E:\doc\baiyi.txt<CR> 
 nnoremap <C-h>d :new E:\doc\baiyi-bak.txt<CR> 
      
 nnoremap <S-l> :call MakLastSea()<CR>
