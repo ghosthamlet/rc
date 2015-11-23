@@ -219,8 +219,9 @@ nnoremap <silent> ,/ :call KommentMulti('c')<CR>
 vnoremap <silent> ,/ :call KommentMulti('c')<CR>
 
 " ssh
-nnoremap <C-h>1 :!E:\download\putty username@ip -P 26299 -pw ...<CR>
-nnoremap <C-h>2 :!E:\download\putty ip -P 26299 -l username<CR> 
+nnoremap <C-h>s :!E:\download\putty<CR> 
+" nnoremap <C-h>1 :!E:\download\putty username@ip -P 26299 -pw ...<CR>
+" nnoremap <C-h>2 :!E:\download\putty ip -P 26299 -l username<CR> 
 
 " TODO use shell to manage remote db, not web
 nnoremap <C-h>3 :!E:\wamp\bin\mysql\mysql5.1.36\bin\mysql -h 110.76.45.148 -u root -p<CR> 
@@ -329,6 +330,9 @@ nnoremap <C-g> :call IncFont()<CR>
 " nnoremap <C-h> :call DecFont()<CR>
 
 nnoremap <C-W>c <C-W>c<C-W>_
+nnoremap <C-W>n <C-W>n<C-W>_
+nnoremap <C-W>j <C-W>j<C-W>_
+nnoremap <C-W>k <C-W>k<C-W>_
  
 " XXX: manual exec, or all erl may insert this
 nnoremap <LocalLeader>ec :call InsertTpl('E:/doc/Erlang/zotonic-release-0.12.1/tpl.erl')<CR>
