@@ -258,6 +258,9 @@ nnoremap ,r :new $MYVIMRC<CR>
 " nnoremap ,f :NERDTreeClose<CR>
 nnoremap ,j :call NERDTreeReopen()<CR>
 nnoremap ,n :call NERDTreeTrigger()<CR>
+" TODO: after install emacs24.3, vim ctags PATH may be override by emacs's
+"       different ctags, vim TlistToggle can't work, so move vim PATH before emacs
+"       but emacs ctags function may failed
 nnoremap <silent> ,m :TlistToggle<CR>
 " nnoremap ,s :source D:\doc\mksession<CR>
 
@@ -329,6 +332,7 @@ nnoremap <LocalLeader>pp :call PrevTabCurFile()<CR>
 nnoremap <C-g> :call IncFont()<CR>
 " nnoremap <C-h> :call DecFont()<CR>
 
+" XXX <C-W>c (press C then W, c) NOT same as <C-W><C-C> (hold C then WC)
 nnoremap <C-W>c <C-W>c<C-W>_
 nnoremap <C-W>n <C-W>n<C-W>_
 nnoremap <C-W>j <C-W>j<C-W>_

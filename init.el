@@ -134,6 +134,10 @@ by Prelude.")
 
 (load-theme 'deeper-blue t)
 
+; TODO: after install emacs24.3, vim ctags PATH may be override by emacs's
+;       different ctags, vim TlistToggle can't work, so move vim PATH before emacs
+;       but emacs ctags function may failed
+
 (require 'evil)
 (require 'evil-leader)
 (global-evil-leader-mode)
