@@ -1,41 +1,104 @@
-<mxfile host="www.draw.io" modified="2019-10-31T15:00:56.920Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" etag="9eGdGopJUz2Gr3-vpn4-" version="12.1.8" type="github" pages="1">
+<mxfile host="www.draw.io" modified="2019-10-31T15:10:43.245Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" etag="TpP6xFdx3_1IYSPea0vG" version="12.1.8" type="github" pages="1">
   <diagram id="kDdFf20i7cY6Q7IxDO60" name="Page-1">
-    <mxGraphModel dx="1408" dy="785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1408" dy="1885" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
         <mxCell id="_YFxXZZmRDHlJ9h84MQX-2" value="&lt;div&gt;贷款10期10000&lt;/div&gt;&lt;div&gt;利率1%&lt;br&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="20" y="180" width="150" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="_YFxXZZmRDHlJ9h84MQX-4" value="" style="endArrow=classic;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="_YFxXZZmRDHlJ9h84MQX-5">
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-4" value="" style="endArrow=classic;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="145" y="190" as="sourcePoint"/>
-            <mxPoint x="195" y="140" as="targetPoint"/>
+            <mxPoint x="267.57359312880726" y="108.2842712474619" as="targetPoint"/>
           </mxGeometry>
-        </mxCell>
-        <mxCell id="_YFxXZZmRDHlJ9h84MQX-5" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="40" width="120" height="80" as="geometry"/>
         </mxCell>
         <mxCell id="_YFxXZZmRDHlJ9h84MQX-6" value="&lt;div&gt;开始于2月前&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
           <mxGeometry x="140" y="130" width="80" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="_YFxXZZmRDHlJ9h84MQX-7" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="_YFxXZZmRDHlJ9h84MQX-2">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="170" y="250" as="sourcePoint"/>
-            <mxPoint x="370" y="210" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="_YFxXZZmRDHlJ9h84MQX-8" value="开始于今天" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
-          <mxGeometry x="233" y="193" width="80" height="20" as="geometry"/>
-        </mxCell>
         <mxCell id="_YFxXZZmRDHlJ9h84MQX-12" value="" style="endArrow=classic;html=1;exitX=0.633;exitY=1.029;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="_YFxXZZmRDHlJ9h84MQX-2">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="20" y="320" as="sourcePoint"/>
-            <mxPoint x="340" y="340" as="targetPoint"/>
+            <mxPoint x="150" y="470" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="_YFxXZZmRDHlJ9h84MQX-13" value="开始于下个月" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
-          <mxGeometry x="190" y="270" width="90" height="20" as="geometry"/>
+          <mxGeometry x="80" y="360" width="90" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-14" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="111.5" as="sourcePoint"/>
+            <mxPoint x="320" y="-30" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-15" value="&lt;div&gt;提前还款：&lt;/div&gt;&lt;div&gt;逾期2月本息+下个月本金&lt;br&gt;&lt;/div&gt;" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="170" width="150" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-16" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="110" as="sourcePoint"/>
+            <mxPoint x="410" y="20" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-18" value="&lt;div&gt;正常还款：&lt;/div&gt;&lt;div&gt;逾期2月本息&lt;br&gt;&lt;/div&gt;" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="320" y="60" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-19" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="110" as="sourcePoint"/>
+            <mxPoint x="460" y="130" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-8" value="开始于今天" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="250" y="250" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-21" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="_YFxXZZmRDHlJ9h84MQX-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="20" y="550" as="sourcePoint"/>
+            <mxPoint x="420" y="320" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-22" value="&lt;div&gt;部分还款：&lt;/div&gt;&lt;div&gt;小于，等于，大于1月本息&lt;br&gt;&lt;/div&gt;" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="320" y="130" width="150" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-23" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="_YFxXZZmRDHlJ9h84MQX-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="320" as="sourcePoint"/>
+            <mxPoint x="610" y="280" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-24" value="&lt;div&gt;提前还款：&lt;/div&gt;&lt;div&gt;本月本息+部分金额&lt;br&gt;&lt;/div&gt;" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="460" y="270" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-25" value="" style="endArrow=classic;html=1;" edge="1" parent="1" target="_YFxXZZmRDHlJ9h84MQX-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="320" as="sourcePoint"/>
+            <mxPoint x="610" y="280" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-26" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="320" as="sourcePoint"/>
+            <mxPoint x="605" y="425" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-27" value="&lt;div&gt;正常还款：&lt;/div&gt;&lt;div&gt;本月本息&lt;br&gt;&lt;/div&gt;" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="489" y="349" width="80" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-28" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="_YFxXZZmRDHlJ9h84MQX-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="320" as="sourcePoint"/>
+            <mxPoint x="460" y="460" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-29" value="&lt;div&gt;部分还款：&lt;/div&gt;&lt;div&gt;小于本月本息&lt;br&gt;&lt;/div&gt;" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;" vertex="1" parent="1">
+          <mxGeometry x="400" y="390" width="90" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="_YFxXZZmRDHlJ9h84MQX-30" value="" style="endArrow=classic;html=1;" edge="1" parent="1" target="_YFxXZZmRDHlJ9h84MQX-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="320" as="sourcePoint"/>
+            <mxPoint x="460" y="460" as="targetPoint"/>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
